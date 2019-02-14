@@ -1,4 +1,4 @@
-# AddBackendServers {#doc_api_903362 .reference}
+# AddBackendServers {#doc_api_1002254 .reference}
 
 调用AddBackendServers添加后端服务器。
 
@@ -6,7 +6,7 @@
 
 ## 调试 {#apiExplorer .section}
 
-单击[这里](https://api.aliyun.com/#product=Slb&api=AddBackendServers)在OpenAPI Explorer中进行可视化调试，并生成SDK代码示例。
+前往【[API Explorer](https://api.aliyun.com/#product=Slb&api=AddBackendServers)】在线调试，API Explorer 提供在线调用 API、动态生成 SDK Example 代码和快速检索接口等能力，能显著降低使用云 API 的难度，强烈推荐使用。
 
 ## 请求参数 {#parameters .section}
 
@@ -16,6 +16,14 @@
 
  |
 |BackendServers|String|是|\[\{"ServerId":"i-2zej4lxhjoq1icue6kup","Weight":"100"\},\{"ServerId":"i-2ze1u9ywulp5pbvvc7hv","Weight":"100"\}\]|要添加的后端服务器列表。
+
+ 服务器组列表需要包含以下参数：
+
+ -   ServerId：ECS实例ID。
+-   Weight：后端服务器的权重，取值：0~100。默认值为100。如果值为0，则不会将请求转发给该后端服务器。
+-   Type：后端服务器类型，取值：
+    -   ecs: ECS实例（默认）
+    -   eni：弹性网卡实例
 
  **说明：** 后端服务器（ECS实例）必须是运行中才可以加入负载均衡实例，每次调用最多可添加20个后端服务器。
 
@@ -98,7 +106,6 @@ http(s)://[Endpoint]/?Action=AddBackendServers
 
 ``` {#json_return_success_demo}
 {
-	"RequestId":"34B82C81-F13B-4EEB-99F6-A048C67CC830",
 	"BackendServers":{
 		"BackendServer":[
 			{
@@ -113,6 +120,7 @@ http(s)://[Endpoint]/?Action=AddBackendServers
 			}
 		]
 	},
+	"RequestId":"34B82C81-F13B-4EEB-99F6-A048C67CC830",
 	"LoadBalancerId":"lb-2ze7o5h52g02kkzze7lru"
 }
 ```
