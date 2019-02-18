@@ -1,5 +1,7 @@
 # 如何获取客户端真实IP {#concept_xp3_zj5_vdb .concept}
 
+阿里云负载均衡服务支持获取客户端真实IP地址的功能。
+
 ## 负载均衡服务获取真实IP说明 {#section_sbt_c2w_wdb .section}
 
 负载均衡提供获取客户端真实IP地址的功能，该功能默认是开启的。
@@ -24,21 +26,21 @@
 2.  根据自己的服务器操作系统版本将x86\\Release或者 x64\\Release目录下的 F5XFFHttpModule.dll 和 F5XFFHttpModule.ini拷贝到某个目录，比如 C:\\F5XForwardedFor\\。确保IIS进程对该目录有读取权限。
 3.  打开**IIS管理器**，双击**模块**功能。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15446802143132_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15504850143132_zh-CN.png)
 
 4.  单击**配置本机模块**，然后在弹出的对话框中，单击**注册**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15446802143133_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15504850143133_zh-CN.png)
 
 5.  添加下载的.dll文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15446802143135_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15504850143135_zh-CN.png)
 
 6.  为添加的两个文件授权允许运行ISAPI和CGI扩展。
 
     **说明：** 确保您已经安装了ISAPI和CGI应用程序。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15446802143136_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4171/15504850143136_zh-CN.png)
 
 7.  重启IIS服务器，等待配置生效。
 
