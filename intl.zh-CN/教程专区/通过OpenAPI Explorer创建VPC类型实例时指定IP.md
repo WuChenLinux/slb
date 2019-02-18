@@ -4,7 +4,7 @@
 
 1.  登录[OpenAPI Explorer控制台](https://api.aliyun.com/)。 
 2.  搜索负载均衡产品的CreateLoadBalancer接口。 
-3.  设置创建负载均衡实例的参数。 此处设置部分参数作为示例，详细参数说明参见[../../../../dita-oss-bucket/SP\_23/DNSLB11870158/ZH-CN\_TP\_4182.md\#](../../../../intl.zh-CN/API参考/负载均衡实例/CreateLoadBalancer.md#)：
+3.  设置创建负载均衡实例的参数。 此处设置部分参数作为示例，详细参数说明参见[CreateLoadBalancer](../../../../../intl.zh-CN/API参考/负载均衡实例/CreateLoadBalancer.md#)：
     -   RegionId：表示负载均衡实例的地域，此处设置为cn-hangzhou。
     -   VpcId：表示负载均衡实例所属VPC的ID。
 
@@ -51,6 +51,6 @@
 
 5.  登录[负载均衡管理控制台](https://slb.console.aliyun.com/slb/cn-hangzhou/slbs)，选择华东1（杭州）区域，查看IP为192.168.0.3的负载均衡实例是否创建成功。 
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23817/154398729713814_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/23817/155045781313814_zh-CN.png)
 
 
