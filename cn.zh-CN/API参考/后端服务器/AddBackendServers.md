@@ -1,4 +1,4 @@
-# AddBackendServers {#doc_api_1002254 .reference}
+# AddBackendServers {#doc_api_1023395 .reference}
 
 调用AddBackendServers添加后端服务器。
 
@@ -36,9 +36,6 @@
  您可以通过调用[DescribeRegions](~~27584~~)获取地域ID。
 
  |
-|OwnerAccount|String|否|OwnerAccount|OwnerAccount
-
- |
 
 ## 返回参数 {#resultMapping .section}
 
@@ -55,11 +52,18 @@
  |
 |└Weight|String|100|后端服务器的权重。
 
+ 取值：**0~100**
+
+ 默认值为**100**，如果值为**0**，则不会将请求转发给该后端服务器。
+
  |
 |└Description|String|后端服务器|后端服务器描述。
 
  |
 |└Type|String|ecs|后端服务器类型。
+
+ -   ecs：ECS实例（默认）
+-   eni：弹性网卡实例
 
  |
 |RequestId|String|34B82C81-F13B-4EEB-99F6-A048C67CC830|请求ID。
