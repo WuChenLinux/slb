@@ -1,109 +1,127 @@
-# CreateRules {#reference_dzs_pd2_ndb .reference}
+# CreateRules {#doc_api_844594 .reference}
 
-Add forwarding rules to an HTTP/HTTPS listener.
+You can call the CreateRules API to add forwarding rules for a specified HTTP or HTTPS listener.
 
-## Request parameters {#section_v5w_nds_cz .section}
+## Debug {#apiExplorer .section}
 
-|Name |Type|Required| Description|
-|:----|:---|:-------|:-----------|
-|Action |String | Yes|The action to perform. Valid value:CreateRules
+Click [here](https://api.aliyun.com/#product=Slb&api=CreateRules) to perform a debug operation in OpenAPI Explorer and automatically generate an SDK code example.
 
-|
-|RegionId|String | Yes|The ID of the region where the SLB instance is located.You can obtain the region ID by calling the DescribeRegions API.
+## Request parameters {#parameters .section}
 
-|
-|LoadBalancerId|String | Yes|The ID of the SLB instance.|
-|ListenerPort|String | Yes|The frontend listening port of the SLB instance.Valid value: 1-65535
+|Name|Type|Required?|Example value|Description|
+|----|----|---------|-------------|-----------|
+|Action|String|Yes|CreateRules|The action to perform. Valid value:
 
-|
-|RuleList|List|Yes|The forwarding rules to add.**Note:** You can add up to 10 forwarding rules in one request.
+ **CreateRules**
 
-|
+ |
+|ListenerPort|Integer|Yes|443|The frontend listener port used by the SLB instance.
 
-|Name |Type|Required|Description|
-|:----|:---|:-------|:----------|
-|RuleName|String | Yes|The name of the forwarding rule.It can contain 1 to 80 characters and can only contain letters, numbers, dashes, slashes, dots, and sublines.
+ Valid values: 1–65535
 
-**Note:** The names of different rules in a listener must be unique.
+ |
+|LoadBalancerId|String|Yes|lb-bp1ca0zt07t934wxezyxo|The ID of the SLB instance
 
-|
-|Domain|String| No|The domain name in the request.It can only contain letters, numbers, dashes, or dots.
+ |
+|RegionId|String|Required|cn-hangzhou|The ID of the region to which the SLB instance belongs.
 
-|
-|Url|String| No|The URL.It can contain 1 to 80 characters, and can contain only letters, numbers, dashes, slashes, dots, percent signs, question marks, number signs, or ampersands.
+ You can call the **DescribeRegions** API to query this parameter.
 
-**Note:** You must specify a domain name or a URL, or both of them. The combination of the domain name and the URL must be unique in a listener.
+ |
+|RuleList|String|Yes|\[\{"RuleName":"Rule2","Domain":"test.com","VServerGroupId":"rsp-bp114nimo4kl9"\}\]|The forwarding rules to be added. A request can contain a maximum of 10 forwarding rules. Each rule can contain the following parameters:
 
-|
-|VServerGroupId|String | Yes|The ID of the VServer group associated with the forwarding rule.|
+ -   **RuleName**: This parameter is mandatory and of the string type. The name of the forwarding rule. The name must be 1 to 80 characters in length and can contain letters, numbers, hyphens \(-\), forward slashes \(/\), periods \(.\), and underscores \(\_\). In a listener, the name of each rule must be unique.
+-   **Domain**: This parameter is optional and of the string type. It specifies the name of the request domain relating to a specified forwarding rule.
+-   **Url**: This parameter is optional and of the string type. It specifies the access path, which must be 1 to 80 characters in length and can contain letters, numbers, hyphens \(-\), forward slashes \(/\), periods \(.\), percent signs \(%\), question marks \(?\), number signs \(\#\), and ampersands \(&\).
+-   **VServerGroupId**: This parameter is optional and of the string type. The ID of the destination VServer group of the forwarding rule.
 
-## Response parameters {#section_ssd_pds_cz .section}
+When you configure a forwarding rule, you must set at least this parameter or the Domain parameter, or both. In a listener, the combination of the two parameters must be unique.
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|RequestId|String|The ID of the request.|
-|Rules|List|A list of forwarding rules.|
+ |
 
-|Name |Type|Description|
-|:----|:---|:----------|
-|RuleId|String|The ID of the forwarding rule.|
-|RuleName|String|The name of the forwarding rule.|
+## Response parameters {#resultMapping .section}
 
-## Examples {#section_oxr_pds_cz .section}
+|Name|Type|Example value|Description|
+|----|----|-------------|-----------|
+|Rules| | |A list of forwarding rules
 
-**Request example**
+ |
+|└RuleId|String|rule-bp12jzy0hvio3|The ID of the forwarding rule
 
-``` {#public}
-https://slb.aliyuncs.com/?Action=CreateRules
+ |
+|└RuleName|String|Rule2|The name of the forwarding rule
+
+ |
+|RequestId|String|9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C|The ID of the request
+
+ |
+
+## Examples {#demo .section}
+
+Request example
+
+``` {#request_demo}
+
+http(s)://[Endpoint]/? Action=CreateRules
+&ListenerPort=443
+&LoadBalancerId=lb-bp1ca0zt07t934wxezyxo
 &RegionId=cn-hangzhou
-&LoadBalancerId=lb-t4nj5vuz8ish9emfk1f20
-&ListenerPort=80
-&Rules=[
-    {"RuleName":"Rule1","Domain":"abcdefg.com","Url":"/image","VServerGroupId":"Group1"},
-    {"RuleName":"Rule2","Domain":"abcdefg.com","Url":"/cache","VServerGroupId":"Group2"},
-  ]
-&CommonParameters
+&RuleList=[{"RuleName":"Rule2","Domain":"test.com","VServerGroupId":"rsp-bp114nimo4kl9"}]
+&<CommonParameters>
+
 ```
 
-**Response example**
+Normal response examples
 
--   XML format
+`XML` format
 
-    ```
-    <? xml version="1.0" encoding="utf-8"? >
-    <CreateRulesResponse>
-    	<RequestId>9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C</RequestId>
-    	<Rules>
-    		<Rule>
-    			<RuleId>rule-3ejhktkaeu</RuleId>
-    			<RuleName>Rule1</RuleName>
-    		</Rule>
-    		<Rule>
-    			<RuleId>rule-tybqi6qkp8</RuleId>
-    			<RuleName>Rule2</RuleName>
-    		</Rule>
-    	</Rules>
-    </CreateRulesResponse>
-    ```
+``` {#xml_return_success_demo}
+<CreateRulesResponse>
+  <RequestId>D63E42FB-F963-4EE5-9B32-05602BF351F3</RequestId>
+  <Rules>
+    <Rule>
+      <RuleId>rule-bp12jzy0hvio3</RuleId>
+      <RuleName>Rule3</RuleName>
+    </Rule>
+  </Rules>
+</CreateRulesResponse>
 
--   JSON format
+```
 
-    ```
-    {
-      "RequestId": "9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C",
-      "Rules": {
-        "Rule ":[
-          {
-            "RuleId": "rule-3ejhktkaeu",
-            "RuleName": "Rule1"
-          },
-          {
-            "RuleId": "rule-tybqi6qkp8",
-            "RuleName": "Rule2"
-          }
-        ]
-      }
-    }
-    ```
+`JSON` format
 
+``` {#json_return_success_demo}
+{
+	"RequestId":"D63E42FB-F963-4EE5-9B32-05602BF351F3",
+	"Rules":{
+		"Rule":[
+			{
+				"RuleId":"rule-bp12jzy0hvio3",
+				"RuleName":"Rule3"
+			}
+		]
+	}
+}
+```
+
+Error response example
+
+`JSON` format
+
+``` {#json_return_failed_demo}
+{
+	"Message":"The specified parameter is not valid.",
+	"RequestId":"0669D684-69D8-408E-A4FA-B9011E0F4E66",
+	"HostId":"slb-pop.aliyuncs.com",
+	"Code":"InvalidParameter"
+}
+```
+
+## Error codes { .section}
+
+|HttpCode|Error code|Error message|Description|
+|--------|----------|-------------|-----------|
+|400|InvalidParameter|The specified VServerGroupId doesn't belong to the rule's LoadBalancerId.|The parameter Bandwidth is invalid. Please check that the parameter is correct.|
+
+[Click here to view the error codes.](https://error-center.aliyun.com/status/product/Slb)
 
