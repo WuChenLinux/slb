@@ -1,61 +1,91 @@
-# StopLoadBalancerListener {#slb_api_StopLoadBalancerListener .reference}
+# StopLoadBalancerListener {#doc_api_883865 .reference}
 
-Stop a listener.
+You can call the StopLoadBalancerListener API to stop a listener.
 
-Note the following when calling this API:
+Before you call the API, note the following:
 
 -   After the API is successfully called, the listener changes to the stopped status.
--   If the status of the Server Load Balancer instance to which the listener belongs is locked, the API cannot be called.
+-   If the status of the SLB instance to which the listener belongs is locked, the API cannot be called.
 
-## Request parameters {#section_v5w_nds_cz .section}
+**Note:** If you stop the listener, your services will be disrupted. Exercise caution when performing this action.
 
-|Name|Type|Required|Description|
-|:---|:---|:-------|:----------|
-|Action|String|Yes|The action to perform.  Valid value:StopLoadBalancerListener
+## Debug {#apiExplorer .section}
 
-|
-|RegionId|String|Yes|The ID of the region where the SLB instance is located.You can obtain the region ID by calling the DescribeRegions API.
+Click [here](https://api.aliyun.com/#product=Slb&api=StopLoadBalancerListener) to perform a debug operation in OpenAPI Explorer and automatically generate an SDK code example.
 
-|
-|LoadBalancerId|String|Yes|The ID of the Server Load Balancer instance.|
-|Listenerport|Integer|Yes|The front-end port of the listener that is used to receive incoming traffic and distribute the traffic to the backend servers.Valid value: 1-65535
+## Request parameters {#parameters .section}
 
-|
+|Name|Type|Required?|Example value|Description|
+|----|----|---------|-------------|-----------|
+|Action|String|Yes|StopLoadBalancerListener|The action to perform. Valid value: **StopLoadBalancerListener**
 
-## Response parameters {#section_ssd_pds_cz .section}
+ |
+|ListenerPort|Integer|Yes|80|The frontend port used by the SLB instance. Valid values: **1–65535**
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|RequestId|String|The ID of the request.|
+ |
+|LoadBalancerId|String|Yes|lb-bp13jaf5qli5xmgl1miup|The ID of the SLB instance
 
-## Examples {#section_oxr_pds_cz .section}
+ |
+|RegionId|String|Yes|cn-hangzhou|The region to which the SLB instance belongs.
 
-**Request example**
+ You can query the region ID by referring to the list of [regions and zones](~~40654~~) or by calling the [DescribeRegions](~~25609~~) API.
 
-``` {#public}
-https://slb.aliyuncs.com/?Action=StopLoadBalancerListener
-&LoadBalancerId=lb-t4nj5vuz8ish9emfk1f20
+ |
+
+## Response parameters {#resultMapping .section}
+
+|Name|Type|Example value|Description|
+|----|----|-------------|-----------|
+|RequestId|String|CEF72CEB-54B6-4AE8-B225-F876FF7BA984|The ID of the request
+
+ |
+
+## Examples {#demo .section}
+
+Request example
+
+``` {#request_demo}
+
+http(s)://[Endpoint]/? Action=StopLoadBalancerListener
 &ListenerPort=80
-&CommonParameters
+&LoadBalancerId=lb-bp13jaf5qli5xmgl1miup
+&<Common request parameters>
+
 ```
 
-**Response example**
+Normal response examples
 
--   XML format
+`XML` format
 
-    ```
-    <? xml version="1.0" encoding="UTF-8"? >
-    <StopLoadBalancerListenerResponse>
-    	<RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
-    </StopLoadBalancerListenerResponse>
-    ```
+``` {#xml_return_success_demo}
+<StopLoadBanancerListenerStatusResponse>
+  <RequestId>21D2B318-650E-4B0B-A3B5-693D462247B3</RequestId>
+</StopLoadBanancerListenerStatusResponse>
 
--   JSON format
+```
 
-    ```
-    {
-      "RequestId": " CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-    }
-    ```
+`JSON` format
 
+``` {#json_return_success_demo}
+{
+	"RequestId":"21D2B318-650E-4B0B-A3B5-693D462247B3"
+}
+```
+
+Error response example
+
+`JSON` format
+
+``` {#json_return_failed_demo}
+{
+	"Message":"The specified parameter is not valid.",
+	"RequestId":"0669D684-69D8-408E-A4FA-B9011E0F4E66",
+	"HostId":"slb-pop.aliyuncs.com",
+	"Code":"InvalidParameter"
+}
+```
+
+## Error codes { .section}
+
+[Click here to view the error codes.](https://error-center.aliyun.com/status/product/Slb)
 
