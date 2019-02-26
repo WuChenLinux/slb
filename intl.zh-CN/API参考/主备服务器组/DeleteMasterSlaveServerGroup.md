@@ -1,4 +1,4 @@
-# DeleteMasterSlaveServerGroup {#doc_api_961768 .reference}
+# DeleteMasterSlaveServerGroup {#doc_api_1025812 .reference}
 
 使用DeleteMasterSlaveServerGroup删除指定的主备服务器组。
 
@@ -10,7 +10,7 @@
 
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
-|Action|String|是|DeleteMasterSlaveServerGroup|要执行的操作。取值：**DeleteMasterSlaveVServerGroup**
+|Action|String|是|DeleteMasterSlaveServerGroup|要执行的操作。取值：**DeleteMasterSlaveServerGroup**
 
  |
 |MasterSlaveServerGroupId|String|是|rsp-cige6j5e7p|主备服务器组ID。
