@@ -1,62 +1,92 @@
-# StartLoadBalancerListener {#slb_api_StartLoadBalancerListener .reference}
+# StartLoadBalancerListener {#doc_api_881517 .reference}
 
-Start a listener.
+You can call the StartLoadBalancerListener API to start a listener.
 
-Note the following when calling this API:
+Start a listener
 
--   The API can be called only when the instance status is stopped.
--   After this API is called, the status of the listener changes to starting.
+Before you call this API, note the following:
+
+-   The API can be called only when the listener is in stopped status.
+-   After this API is called successfully, the status of the listener changes to starting.
 -   If the status of the SLB instance to which the listener belongs is locked, this API cannot be called.
 
-## Request parameters {#section_v5w_nds_cz .section}
+## Debug {#apiExplorer .section}
 
-|Name|Type|Required|Description|
-|:---|:---|:-------|:----------|
-|Action|String|Yes|The action to perform.  Valid value:StartLoadBalancerListener
+Click [here](https://api.aliyun.com/#product=Slb&api=StartLoadBalancerListener) to perform a debug operation in OpenAPI Explorer and automatically generate an SDK code example.
 
-|
-|RegionId|String|Yes|The ID of the region where the SLB instance is located.You can obtain the region ID by calling the DescribeRegions API.
+## Request parameters {#parameters .section}
 
-|
-|LoadBalancerId|String|Yes|The ID of the Server Load Balancer instance.|
-|Listenerport|Integer|Yes|The front-end port of the listener that is used to receive incoming traffic and distribute the traffic to the backend servers.Valid value: 1-65535
+|Name|Type|Required?|Example value|Description|
+|----|----|---------|-------------|-----------|
+|Action|String|Yes|StartLoadBalancerListener|The action to perform. Valid value: **StartLoadBalancerListener**
 
-|
+ |
+|ListenerPort|Integer|Yes|80|The frontend port used by the SLB instance. Valid values: 1–65535
 
-## Response parameters {#section_ssd_pds_cz .section}
+ |
+|LoadBalancerId|String|Yes|lb-bp13jaf5qli5xmgl1miup|The ID of the SLB instance
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|RequestId|String|The ID of the request.|
+ |
+|RegionId|String|Yes|cn-hangzhou|The region to which the SLB instance belongs.
 
-## Examples {#section_oxr_pds_cz .section}
+ You can query the region ID by calling the [DescribeRegions](~~27584~~) API.
 
-**Request example**
+ |
 
-``` {#public}
-https://slb.aliyuncs.com/?Action=StartLoadBalancerListener
-&LoadBalancerId=lb-t4nj5vuz8ish9emfk1f20
+## Response parameters {#resultMapping .section}
+
+|Name|Type|Example value|Description|
+|----|----|-------------|-----------|
+|RequestId|String|CEF72CEB-54B6-4AE8-B225-F876FF7BA984|The ID of the request
+
+ |
+
+## Examples {#demo .section}
+
+Request example
+
+``` {#request_demo}
+
+/? Action=StartLoadBalancerListener
 &ListenerPort=80
-&CommonParameters
+&LoadBalancerId=139a00604ad-cn-east-hangzhou-01
+&<CommonParameters>
+
 ```
 
-**Response example**
+Normal response examples
 
--   XML format
+`XML` format
 
-    ```
-    <? xml version="1.0" encoding="UTF-8"? >
-    <StartLoadBalancerListenerResponse>
-    	<RequestId>CEF72CEB-54B6-4AE8-B225-F876FF7BA984</RequestId>
-    </StartLoadBalancerListenerResponse>
-    ```
+``` {#xml_return_success_demo}
+<StartLoadBalancerListenerResponse>
+  <RequestId>CC000321-00F2-49B8-9BCA-60D822414960</RequestId>
+</StartLoadBalancerListenerResponse>
 
--   JSON format
+```
 
-    ```
-    {
-      "RequestId": "CEF72CEB-54B6-4AE8-B225-F876FF7BA984"
-    }
-    ```
+`JSON` format
 
+``` {#json_return_success_demo}
+{
+	"RequestId":"CC000321-00F2-49B8-9BCA-60D822414960"
+}
+```
+
+Error response example
+
+`JSON` format
+
+``` {#json_return_failed_demo}
+{
+	"Message":"The specified parameter is not valid.",
+	"RequestId":"0669D684-69D8-408E-A4FA-B9011E0F4E66",
+	"HostId":"slb-pop.aliyuncs.com",
+	"Code":"InvalidParameter"
+}
+```
+
+## Error codes { .section}
+
+[Click here to view the error codes.](https://error-center.aliyun.com/status/product/Slb)
 
