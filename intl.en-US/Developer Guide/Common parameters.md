@@ -13,7 +13,7 @@ Common request parameters are request parameters used by each API.
 
 |
 |AccessKeyId|String|Yes|The AccessKey ID of the user that calls the API.|
-|Signature|String|Yes|The request signature.|
+|Signature|String|Yes|The signature result string.|
 |SignatureMethod|String|Yes|The algorithm used to create the request signature. Valid value:HMAC-SHA1
 
 |
@@ -23,7 +23,7 @@ Common request parameters are request parameters used by each API.
 |SignatureVersion|String|Yes|The signature version to use. Valid value:1.0
 
 |
-|SignatureNonce|String|Yes|A random number used for the signature to prevent from network attacks.Different random numbers must be used for different requests.
+|SignatureNonce|String|Yes|A unique random number used to prevent from network replay attacks.Different random numbers must be used for different requests.
 
 |
 |ResourceOwnerAccount|String|No|The account owner of the resource that this request calls.|
@@ -39,20 +39,20 @@ http://slb.aliyuncs.com/?Action=DescribeLoadBalancers
 &SignatureNonce=NwDAxvLU6tFE0DVb
 &Version=2014-05-15
 &SignatureVersion=1.0
-&Signature=*Signature*
+&Signature=Signature
 ```
 
 ## Common response parameters {#section_rjn_1hf_cz .section}
 
 The API response uses unified format. Returning 2XX HTTP status code indicates a successful call; returning 4xx or 5xx HTTP status code indicates a failed call. When a call succeeds, the formats of the returned data include XML and JSON. You can specify the format of the returned data when sending the request. The default format is XML.
 
-Each time you send a request to call an interface, the system returns a unique identification code \(RequestId\), whether the request is successful.
+No matter the call is successful or not, the system returns a unique identification code \(RequestId\) each time you send a request.
 
 -   XML format
 
     ```
     <? xml version="1.0" encoding="utf-8"? > 
-        <!—The result root node---->
+        <!—The root node of the result-->
         <Action+Response>
             <!—The returned request tag-->
             <RequestId>4C467B38-3910-447D-87BC-AC049166F216</RequestId>
@@ -61,7 +61,7 @@ Each time you send a request to call an interface, the system returns a unique i
     
     ```
 
--   JSON format:
+-   JSON format
 
     ```
     {
