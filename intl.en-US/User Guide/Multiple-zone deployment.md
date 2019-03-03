@@ -16,7 +16,7 @@ Note the following about SLB primary/backup zones:
 
 For more information, see [SLB high availability](../reseller.en-US/Product Introduction/High availability of Server Load Balancer.md#).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4155/15479654222835_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4155/15516088602835_en-US.png)
 
 ## Primary/backup zone list {#section_ml2_ykb_wdb .section}
 
@@ -93,8 +93,8 @@ Zone E
 |Zone A|Zone B|
 |Zone B|Zone A|
 |UK \(London\)|Multiple-zone|**Primary zone**|**Available backup zones**|
-|Zone A|Zone A|
-|Zone B|Zone B|
+|Zone A|Zone B|
+|Zone B|Zone A|
 |UAE \(Dubai\)|Single-zone|Zone A|
 |Singapore|Multiple-zone|**Primary zone**|**Available backup zones**|
 |Zone A|Zone B|
