@@ -2,12 +2,12 @@
 
 包含以下常见问题：
 
--   [1. 负载均衡实例如何计费？](intl.zh-CN/常见问题/负载均衡实例计费FAQ.md#section_tjm_3mx_wdb)
--   [2. 负载均衡是否对入流量计费？](intl.zh-CN/常见问题/负载均衡实例计费FAQ.md#section_bhr_jmx_wdb)
--   [3. 健康检查产生的流量是否会被计费？](intl.zh-CN/常见问题/负载均衡实例计费FAQ.md#section_jpf_4mx_wdb)
--   [4. ECS加入负载均衡后端服务器资源池是否影响其计费？](intl.zh-CN/常见问题/负载均衡实例计费FAQ.md#section_bp4_pmx_wdb)
--   [5. 攻击流量是否会被计费？](intl.zh-CN/常见问题/负载均衡实例计费FAQ.md#section_hph_rmx_wdb)
--   [6. 负载均衡实例的所有后端ECS都停止，或者没有挂载ECS，是否会被计费？](intl.zh-CN/常见问题/负载均衡实例计费FAQ.md#section_vbl_smx_wdb)
+-   [1. 负载均衡实例如何计费？](#section_tjm_3mx_wdb)
+-   [2. 负载均衡是否对入流量计费？](#section_bhr_jmx_wdb)
+-   [3. 健康检查产生的流量是否会被计费？](#section_jpf_4mx_wdb)
+-   [4. ECS加入负载均衡后端服务器资源池是否影响其计费？](#section_bp4_pmx_wdb)
+-   [5. 攻击流量是否会被计费？](#section_hph_rmx_wdb)
+-   [6. 负载均衡实例的所有后端ECS都停止，或者没有挂载ECS，是否会被计费？](#section_vbl_smx_wdb)
 -   [7. 私网负载均衡实例也会收取规格费吗？](#section_7)
 -   [8. 性能保障型实例的流量费和实例费与共享型一样吗？](#section_8)
 -   [9. 收取规格费以后，共享型实例也会额外收取费用吗？](#section_9)
@@ -16,11 +16,11 @@
 
 ## 1. 负载均衡实例如何计费？ {#section_tjm_3mx_wdb .section}
 
-参考[按量计费](../../../../intl.zh-CN/产品定价/按量计费.md#)
+参考[按量计费](../../../../../intl.zh-CN/产品定价/按量计费.md#)
 
 ## 2. 负载均衡是否对入流量计费？ {#section_bhr_jmx_wdb .section}
 
-负载均衡目前只对出流量计费，入流量不计费。关于负载均衡网络流量路径的信息，参考[网络流量说明](../../../../intl.zh-CN/历史文档/用户指南（旧版控制台）/负载均衡实例/网络流量路径说明.md#)。
+负载均衡目前只对出流量计费，入流量不计费。关于负载均衡网络流量路径的信息，参考[网络流量说明](../../../../../intl.zh-CN/历史文档/用户指南（旧版控制台）/负载均衡实例/网络流量路径说明.md#)。
 
 ## 3. 健康检查产生的流量是否会被计费？ {#section_jpf_4mx_wdb .section}
 
