@@ -2,18 +2,18 @@
 
 包含以下常见问题：
 
--   [1. 健康检查的原理是什么？](intl.zh-CN/常见问题/健康检查FAQ.md#section_m43_1qx_wdb)
--   [2. 推荐的健康检查配置是什么？](intl.zh-CN/常见问题/健康检查FAQ.md#section_jhf_jqx_wdb)
--   [3. 是否可以关闭健康检查？](intl.zh-CN/常见问题/健康检查FAQ.md#section_tn3_sqx_wdb)
--   [4. TCP监听如何选择健康检查方式？](intl.zh-CN/常见问题/健康检查FAQ.md#section_un3_sqx_wdb)
--   [5. ECS实例权重设置为零对健康检查有什么影响？](intl.zh-CN/常见问题/健康检查FAQ.md#section_wn3_sqx_wdb)
--   [6. HTTP监听向后端ECS实例执行健康检查使用的方法是什么？](intl.zh-CN/常见问题/健康检查FAQ.md#section_xn3_sqx_wdb)
--   [7. HTTP监听向后端ECS实例执行健康检查的IP地址是什么？](intl.zh-CN/常见问题/健康检查FAQ.md#section_yn3_sqx_wdb)
--   [8. 为什么健康检查监控频率与web日志记录不一致？](intl.zh-CN/常见问题/健康检查FAQ.md#section_zn3_sqx_wdb)
--   [9. 健康检查是否会消耗系统资源？](intl.zh-CN/常见问题/健康检查FAQ.md#section_b43_sqx_wdb)
--   [10. 负载均衡因后端数据库故障导致健康检查失败，如何处理？](intl.zh-CN/常见问题/健康检查FAQ.md#section_d43_sqx_wdb)
+-   [1. 健康检查的原理是什么？](#section_m43_1qx_wdb)
+-   [2. 推荐的健康检查配置是什么？](#section_jhf_jqx_wdb)
+-   [3. 是否可以关闭健康检查？](#section_tn3_sqx_wdb)
+-   [4. TCP监听如何选择健康检查方式？](#section_un3_sqx_wdb)
+-   [5. ECS实例权重设置为零对健康检查有什么影响？](#section_wn3_sqx_wdb)
+-   [6. HTTP监听向后端ECS实例执行健康检查使用的方法是什么？](#section_xn3_sqx_wdb)
+-   [7. HTTP监听向后端ECS实例执行健康检查的IP地址是什么？](#section_yn3_sqx_wdb)
+-   [8. 为什么健康检查监控频率与web日志记录不一致？](#section_zn3_sqx_wdb)
+-   [9. 健康检查是否会消耗系统资源？](#section_b43_sqx_wdb)
+-   [10. 负载均衡因后端数据库故障导致健康检查失败，如何处理？](#section_d43_sqx_wdb)
 -   [11. 负载均衡服务TCP端口健康检查成功，为什么在后端业务日志中出现网络连接异常信息？](#section_11)
--   [12. 为什么业务本身没有异常但是健康检查显示异常？](intl.zh-CN/常见问题/健康检查FAQ.md#section_ldb_5sx_wdb)
+-   [12. 为什么业务本身没有异常但是健康检查显示异常？](#section_ldb_5sx_wdb)
 
 ## 1. 健康检查的原理是什么？ {#section_m43_1qx_wdb .section}
 
@@ -23,7 +23,7 @@
 
 更多详细信息，参考[负载均衡健康检查原理](../intl.zh-CN/历史文档/用户指南（旧版控制台）/监听/健康检查/健康检查介绍.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4288/15446045963226_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4288/15516797263226_zh-CN.png)
 
 ## 2. 推荐的健康检查配置是什么？ {#section_jhf_jqx_wdb .section}
 
@@ -58,8 +58,8 @@
 
 TCP监听支持HTTP和TCP两种健康检查方式:
 
--   TCP模式的健康检查基于网络层探测，利用传统的三次握手机制来判断后端服务是否异常。
--   HTTP模式的健康检查是Tengine节点服务器通过发送HTTP Head请求，对比返回码来校验后端服务是否异常。
+-   TCP协议健康检查通过发送SYN握手报文，检测服务器端口是否存活。
+-   HTTP协议健康检查通过发送HEAD/GET请求，模拟浏览器的访问行为来检查服务器应用是否健康。
 
 TCP健康检查方式对服务器的性能资源消耗相对要少一些。如果您对后端服务器的负载高度敏感，则选择TCP健康检查；如果负载不是很高，则选择HTTP健康检查。
 
@@ -111,7 +111,7 @@ ECS实例内配置了两个网站，www.test.com是静态网站，app.test.com�
 
 负载均衡后端配置TCP服务端口后，后端业务日志中频繁出现类似如下网络连接异常错误信息。经进抓包分析，发现相关请求来自负载均衡服务器，同时负载均衡主动向服务器发送了RST数据包。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4288/15446045963231_zh-CN.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4288/15516797263231_zh-CN.jpg)
 
 问题原因：
 
@@ -152,5 +152,5 @@ Tengine/Nginx配置会发现curl没有问题，但是echo测试会匹配到默�
 -   修改主配置文件，将默认站点注释掉。
 -   在健康检查配置中添加检查域名。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4288/15446045963234_zh-CN.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4288/15516797263234_zh-CN.jpg)
 
