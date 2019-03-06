@@ -70,10 +70,25 @@ Traffic fees of Internet SLB instances are billed as follows:
     |Japan \(Tokyo\)|0.120|
     |Germany \(Frankfurt\)|0.070|
     |UAE \(Dubai\)|0.447|
-    |Australia \(Sydney\)|0.130|
+    |Australia \(Sydney\)|0.096|
 
 
 ## Capacity fee {#section_r13_y1h_j2b .section}
+
+The following are three key performance metrics for guaranteed-performance instances. The limits of these metrics are different for instances of different capacities. For more information, see [Guaranteed-performance instances](../intl.en-US/User Guide/Server Load Balancer instance/Guaranteed-performance instances.md#).
+
+-   Max Connection
+
+    The maximum number of connections to a SLB instance. When the maximum number of connections reaches the limits of the capacity, the new connection will be dropped.
+
+-   Connection Per Second \(CPS\)
+
+    The rate at which a new connection is established per second. When the CPS reaches the limits of the specification, the new connection will be dropped.
+
+-   Query Per Second \(QPS\)
+
+    The number of HTTP/HTTPS requests that can be processed per second. This metrics is only available for Layer-7 Server Load Balancer. When the QPS reaches the limits of the specification, the new connection will be dropped.
+
 
 The capacity fee of a guaranteed-performance instance is charged based on usage regardless of the capacity that you choose. If the actual performance metrics is between two capacities, the cost is calculated according to the larger capacity.
 
@@ -92,41 +107,41 @@ For example, the capacity slb.s3.large \(1,000,000; CPS 500,000; QPS 50,000\) is
     Comparing these three metrics, the specification of the QPS metrics is highest, therefore, the specification fee of the instance in this hour is charged at the price of the Higher I \(slb.s3.small\) specification.
 
 
-The following figure is an example showing how the specification fee is billed for an SLB instance in the first three hours: 
+The following figure is an example showing how the specification fee is billed for an SLB instance:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13418/15414072583113_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/13418/15518765233113_en-US.png)
 
 The billing of the guaranteed-performance instances is flexible.  The capacity you select when purchasing an instance is the performance limitation of the instance. For example, if slb.s3.medium is selected, the new connections are dropped when the HTTP requests in one second reach 30,000.
 
 The price in the following table is only for reference. Take the price on the console as standard.
 
-|Region| Capacity|Max Connection|CPS|QPS|Capacity fee \(USD/Hour\)|
-|:-----|:--------|:-------------|:--|:--|:------------------------|
-| China \(Hangzhou\) 
+|Region|Capacity|Max Connection|CPS|QPS|Specification fee \(USD/hour\)|
+|:-----|:-------|:-------------|:--|:--|:-----------------------------|
+| China \(Hangzhou\)
 
  China \(Zhangjiakou\)
 
- China \(Huhhot\)
+ China \(Hohhot\)
 
- China \(Qingdao\) 
+ China \(Qingdao\)
 
- China \(Beijing\)  
+ China \(Beijing\)
 
- China \(Shanghai\) 
+ China \(Shanghai\)
 
  China \(Shenzhen\)
 
- |Small I \(slb.s1.small\)|5,000|3,000|1,000|Free|
-|Standard I \(slb.s2.small\)|50,000|5,000|5,000|0.05|
-|Specification 3: Standard II \(slb.s2.medium\)|100,000|10,000|10,000|0.10|
-|Higher I \(slb.s3.small\)|200,000|20,000|20,000|0.20|
-|Higher II \(slb.s3.medium\)|500,000|50,000|30,000|0.31|
-|Extra I \(slb.s3.large\)|1,000,000|100,000|50,000|0.51|
+ |Capacity 1: Small I \(slb.s1.small\)|5,000|3,000|1,000|Free of charge|
+|Capacity 2: Standard I \(slb.s2.small\)|50,000|5,000|5,000|0.05|
+|Capacity 3: Standard II \(slb.s2.medium\)|100,000|10,000|10,000|0.10|
+|Capacity 4: Higher I \(slb.s3.small\)|200,000|20,000|20,000|0.20|
+|Capacity 5: Higher II \(slb.s3.medium\)|500,000|50,000|30,000|0.31|
+|Capacity 6: Super I \(slb.s3.large\)|1,000,000|100,000|50,000|0.51|
 | Singapore
 
- Malaysia \(Kuala Lumpur\) 
+ Malaysia \(Kuala Lumpur\)
 
- Indonesia \(Jakarta\) 
+ Indonesia \(Jakarta\)
 
  India \(Mumbai\)
 
@@ -136,10 +151,10 @@ The price in the following table is only for reference. Take the price on the co
 
  China \(Hong Kong\)
 
- |Small I \(slb.s1.small\)|5,000|3,000|1,000|Free|
-|Standard I \(slb.s2.small\)|50,000|5,000|5,000|0.06|
-|Standard II \(slb.s2.medium\)|100,000|10,000|10,000|0.12|
-|Higher I \(slb.s3.small\)|200,000|20,000|20,000|0.24|
-|Higher II \(slb.s3.medium\)|500,000|50,000|30,000|0.37|
-|Extra I \(slb.s3.large\)|1,000,000|100,000|50,000|0.61|
+ |Capacity 1: Small I \(slb.s1.small\)|5,000|3,000|1,000|Free|
+|Capacity 2: Standard I \(slb.s2.small\)|50,000|5,000|5,000|0.06|
+|Capacity 3: Standard II \(slb.s2.medium\)|100,000|10,000|10,000|0.12|
+|Capacity 4: Higher I \(slb.s3.small\)|200,000|20,000|20,000|0.24|
+|Capacity 5: Higher II \(slb.s3.medium\)|500,000|50,000|30,000|0.37|
+|Capacity 6: Extra I \(slb.s3.large\)|1,000,000|100,000|50,000|0.61|
 
